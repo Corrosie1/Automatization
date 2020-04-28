@@ -47,14 +47,20 @@ class Tools:
                     print("{}[+]{} NMAP".format(yellow, reset))
                 if self.userProtocol.upper() == str("POP3"):
                     self.protocolArt()
+                    print("{}[+]{} NMAP".format(yellow, reset))
+                    print("{}[+]{} HYDRA".format(yellow, reset))
                 if self.userProtocol.upper() == str("RPCBIND"):
                     self.protocolArt()
+                    print("{}[+]{} NMAP".format(yellow, reset))
+                    print("{}[+]{} RPCINFO".format(yellow, reset))
                 if self.userProtocol.upper() == str("MSRPC"):
                     self.protocolArt()
                 if self.userProtocol.upper() == str("NETBIOS-SSN"):
                     self.protocolArt()
                 if self.userProtocol.upper() == str("IMAP"):
                     self.protocolArt()
+                    print("{}[+]{} NMAP".format(yellow, reset))
+                    print("{}[+]{} HYDRA".format(yellow, reset))
                 if self.userProtocol.upper() == str("HTTPS"):
                     self.protocolArt()
                 if self.userProtocol.upper() == str("SMB"):

@@ -58,7 +58,7 @@ class HTTP:
         shell("wpscan --url http://{}:{}/{} > /tmp/testWpScan.txt".format(self.ip, self.port, wpScanUriPath))
         output_1 = subprocess.check_output("cat /tmp/testWpScan.txt | grep -i 'Scan Aborted' | cut -d : -f 1", shell=True, universal_newlines=True)
         if len(output_1) > 0:
-            print("{}[*]{} {}Scan aborted{} on URI {}http://{}:{}/{},{} checking if target is running wordpress on {}http://www.{}/{}{}".format(green, reset, red, reset, cyan, self.ip, self.port, reset, wpScanUriPath, cyan, self.ip, reset, wpScanUriPath))
+            print("{}[*]{} {}Scan aborted{} on URI {}http://{}:{}/{},{} checking if target is running wordpress on {}http://www.{}:{}/{}{}".format(green, reset, red, reset, cyan, self.ip, self.port, wpScanUriPath, reset, cyan, self.ip, self.port, wpScanUriPath, reset))
             shell("wpscan --url http://www.{}:{}/{} > /tmp/testWpScan.txt".format(self.ip, self.port, wpScanUriPath))
             output_2 = subprocess.check_output("cat /tmp/testWpScan.txt | grep -i 'Scan Aborted' | cut -d : -f 1", shell=True, universal_newlines=True)
             if len(output_2) > 0:
@@ -100,23 +100,30 @@ class HTTP:
         # Non Recursive
         shell("gnome-terminal -q -- dirb http://{}:{} {} -r -o {}/No-recursive.txt".format(self.ip, self.port, Dirb_Brute_List, output))
         # Extensions Recursive
-        shell("gnome-terminal -q -- dirb http://{}:{} {} -o {}/recursive-Extensions.txt -X .pl, .sh, .exe, .ps, .py".format(self.ip, self.port, Dirb_Brute_List, output))
+        shell("gnome-terminal -q -- dirb http://{}:{} {} -o {}/recursive-Extensions.txt -X .pl, .sh, .exe, .ps, .py, .php, .cgi, .log, .sql, .xml, .aspx, .asp".format(self.ip, self.port, Dirb_Brute_List, output))
 
     def requests(self):
         # Robots.txt
         requestRobot = requests.get('http://{}:{}/robots.txt'.format(self.ip, self.port))
         print("{}[*]{} {}http://{}:{}/robots.txt{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestRobot.status_code, reset))
         # Admin
-        requestAdmin = requests.get('http://{}:{}/admin'.format(self.ip, self.port))
-        print("{}[*]{} {}http://{}:{}/admin{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestAdmin.status_code, reset))
+        try:
+            requestAdmin = requests.get('http://{}:{}/admin'.format(self.ip, self.port))
+            print("{}[*]{} {}http://{}:{}/admin{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip,
+                                                                                         self.port, reset, red,
+                                                                                         requestAdmin.status_code,
+                                                                                         reset))
+            if requestAdmin.status_code == 200:
+                print("{}[*]{} Dont forget to try some standard default username/password combinations :".format(green,
+                                                                                                                 reset))
+                print("{}[*]{} \t - admin:admin".format(green, reset))
+                print("{}[*]{} \t - admin:password".format(green, reset))
+                print("{}[*]{} \t - admin:passwd".format(green, reset))
+                print("{}[*]{} \t - admin:123456".format(green, reset))
+                #
+        except:
+            pass
         # .htpasswd
-        if requestAdmin.status_code == 200:
-            print("{}[*]{} Dont forget to try some standard default username/password combinations :".format(green, reset))
-            print("{}[*]{} \t - admin:admin".format(green, reset))
-            print("{}[*]{} \t - admin:password".format(green, reset))
-            print("{}[*]{} \t - admin:passwd".format(green, reset))
-            print("{}[*]{} \t - admin:123456".format(green, reset))
-            #
         requestPasswd = requests.get('http://{}:{}/.htpasswd'.format(self.ip, self.port))
         print("{}[*]{} {}http://{}:{}/.htpasswd{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestPasswd.status_code, reset))
         # .htaccess
