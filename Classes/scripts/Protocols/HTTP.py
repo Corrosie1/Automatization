@@ -96,36 +96,36 @@ class HTTP:
         #
         Test().exist_outputDir(output)
         # Recursive
-        shell("gnome-terminal -q -- dirb http://{}:{} {} -o {}/Recursive.txt".format(self.ip, self.port, Dirb_Brute_List, output))
+        shell("gnome-terminal -q -- dirb -f http://{}:{} {} -o {}/Recursive.txt".format(self.ip, self.port, Dirb_Brute_List, output))
         # Non Recursive
-        shell("gnome-terminal -q -- dirb http://{}:{} {} -r -o {}/No-recursive.txt".format(self.ip, self.port, Dirb_Brute_List, output))
+        shell("gnome-terminal -q -- dirb -f http://{}:{} {} -r -o {}/No-recursive.txt".format(self.ip, self.port, Dirb_Brute_List, output))
         # Extensions Recursive
-        shell("gnome-terminal -q -- dirb http://{}:{} {} -o {}/recursive-Extensions.txt -X .pl, .sh, .exe, .ps, .py, .php, .cgi, .log, .sql, .xml, .aspx, .asp".format(self.ip, self.port, Dirb_Brute_List, output))
+        shell("gnome-terminal -q -- dirb -f http://{}:{} {} -o {}/recursive-Extensions.txt -X .pl, .sh, .exe, .ps, .py, .php, .cgi, .log, .sql, .xml, .aspx, .asp".format(self.ip, self.port, Dirb_Brute_List, output))
 
     def requests(self):
         # Robots.txt
         requestRobot = requests.get('http://{}:{}/robots.txt'.format(self.ip, self.port))
-        print("{}[*]{} {}http://{}:{}/robots.txt{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestRobot.status_code, reset))
+        print("{}[+]{} http://{}:{}/{}robots.txt{} returned status code : {}{}{} ".format(brightGreen, reset, self.ip, self.port, red, reset, red, requestRobot.status_code, reset))
         # Admin
         try:
             requestAdmin = requests.get('http://{}:{}/admin'.format(self.ip, self.port))
-            print("{}[*]{} {}http://{}:{}/admin{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip,
-                                                                                         self.port, reset, red,
+            print("{}[+]{} http://{}:{}/{}admin{} returned status code : {}{}{} ".format(brightGreen, reset, self.ip,
+                                                                                         self.port, red, reset, red,
                                                                                          requestAdmin.status_code,
                                                                                          reset))
             if requestAdmin.status_code == 200:
                 print("{}[*]{} Dont forget to try some standard default username/password combinations :".format(green,
                                                                                                                  reset))
-                print("{}[*]{} \t - admin:admin".format(green, reset))
-                print("{}[*]{} \t - admin:password".format(green, reset))
-                print("{}[*]{} \t - admin:passwd".format(green, reset))
-                print("{}[*]{} \t - admin:123456".format(green, reset))
+                print("{}[+]{} - admin:admin".format(brightGreen, reset))
+                print("{}[+]{} - admin:password".format(brightGreen, reset))
+                print("{}[+]{} - admin:passwd".format(brightGreen, reset))
+                print("{}[+]{} - admin:123456".format(brightGreen, reset))
                 #
         except:
             pass
         # .htpasswd
         requestPasswd = requests.get('http://{}:{}/.htpasswd'.format(self.ip, self.port))
-        print("{}[*]{} {}http://{}:{}/.htpasswd{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestPasswd.status_code, reset))
+        print("{}[+]{} http://{}:{}/{}.htpasswd{} returned status code : {}{}{} ".format(brightGreen, reset, self.ip, self.port, red, reset, red, requestPasswd.status_code, reset))
         # .htaccess
         requestAccess = requests.get('http://{}:{}/.htaccess'.format(self.ip, self.port))
-        print("{}[*]{} {}http://{}:{}/.htaccess{} returned status code : {}{}{} ".format(green, reset, cyan, self.ip, self.port, reset, red, requestAccess.status_code, reset))
+        print("{}[+]{} http://{}:{}/{}.htaccess{} returned status code : {}{}{} ".format(brightGreen, reset, self.ip, self.port, red, reset, red, requestAccess.status_code, reset))

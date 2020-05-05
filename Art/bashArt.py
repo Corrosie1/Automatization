@@ -1,6 +1,3 @@
-import os
-shell = os.system
-
 def manPc():
     print('')
     print('              _')

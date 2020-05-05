@@ -47,6 +47,6 @@ class IMAP:
 
     def imapInfo(self):
         print("{}[*]{} Don't forget to try and make use of the following tool in {} metasploit {}, they might give you more information".format(green, reset, red, reset))
-        print("{}[*]{}      - 'auxiliary/scanner/imap/imap_version' ".format(green, reset))
+        print("{}[+]{} - 'auxiliary/scanner/imap/imap_version' ".format(yellow, reset))
         print("{}[*]{} if that does not work, try the command : nc -vn <IP> <PORT>".format(green, reset))
-        print("{}[*]{} for example : {}'nc -vn {} {}'{}, this will work on multiple ports".format(green, reset, cyan, self.ip, self.port, reset))
+        print("{}[+]{} - for example: {}'nc -vn {} {}'{}, this will work on multiple ports".format(yellow, reset, cyan, self.ip, self.port, reset))

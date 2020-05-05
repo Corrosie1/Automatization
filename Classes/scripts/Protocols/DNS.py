@@ -22,12 +22,12 @@ class DNS:
             self.nmapDnsIp()
 
             if DNS_DOMAIN_NAME != str(""):
-                print("{}[*]{} Current Domain that is being tested on (And is within the settings.py file) : {}".format(green, reset, red, DNS_DOMAIN_NAME, reset))
+                print("{}[*]{} Current Domain that is being tested on (And is within the settings.py file) : {}{}{}".format(green, reset, red, DNS_DOMAIN_NAME, reset))
                 print("{}[*]{} Dont forget to make use of the following tools:".format(green, reset))
-                print("{}[*]{}      - https://hackking.net/subdomain-takeover-scanner/ (subdomain takeover scanner)".format(green, reset))
-                print("{}[*]{}      - https://centralops.net/co/DomainDossier.aspx (deep queries on a DNS server)".format(green, reset))
-                print("{}[*]{}      - https://emkei.cz/  (Mail spoofer)".format(green, reset))
-                print("{}[*]{}      - https://dnsspy.io/ (General deep scan of DNS)".format(green, reset))
+                print("{}[+]{} - https://hackking.net/subdomain-takeover-scanner/ (subdomain takeover scanner)".format(brightGreen, reset))
+                print("{}[+]{} - https://centralops.net/co/DomainDossier.aspx (deep queries on a DNS server)".format(brightGreen, reset))
+                print("{}[+]{} - https://emkei.cz/  (Mail spoofer)".format(brightGreen, reset))
+                print("{}[+]{} - https://dnsspy.io/ (General deep scan of DNS)".format(brightGreen, reset))
                 shell("sleep 2")
 
                 # 1 - DNS-ENUM - DNS

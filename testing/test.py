@@ -24,6 +24,8 @@ class Test:
 
     def networkMon(self):
         shell("timeout 2s ifstat -T > /tmp/networkMon.txt")
+        output = 0
+
         test = subprocess.check_output("cat /tmp/networkMon.txt | grep -w -e [0-9].* | wc -w", shell=True,
                                        universal_newlines=True)
         if int(test) == 4:
@@ -43,14 +45,13 @@ class Test:
                                                                                                               reset))
             shell("sleep 2")
             shell("exit 0")
-
-        return float(output)
         shell("rm -rf /tmp/networkMon.txt")
+        return float(output)
 
     def continueOrWait(self):
             traffic = self.networkMon()
             #
-            if  traffic > maxOutgoingTraffic and maxTerminalsOpen > self.countTerminals():
+            if traffic > maxOutgoingTraffic and self.countTerminals() > maxTerminalsOpen:
                 print("{}[*]{} Waiting.... terminals opened : {}{}{}, open terminals allowed : {}{}{}".format(green, reset, red, self.countTerminals(), reset, red, maxTerminalsOpen, reset))
                 print("{}[*]{} Outgoing traffic : {}{} KB/s{}, outgoing traffic allowed : {}{} KB/s{}".format(green, reset, red, traffic, reset, red, maxOutgoingTraffic, reset))
                 os.system("sleep 10")

@@ -15,7 +15,6 @@ class Nmap:
         self.ip = ip
         self.path = "{}{}".format(outputDir, ip)
         #
-        shell("clear")
         Test().exist_outputDir(self.path)
         print("{}[*]{} Starting up fast nmap port scan, host = {}, outputdir = {}".format(green, reset, self.ip, self.path))
         print("{}[*]{} This may take a little moment".format(green, reset))

@@ -60,20 +60,20 @@ class Port:
             for j in range(len(self.protocolArray)):
                 if servicesClean[i] == self.protocolArray[j]:
                     portFound(portsClean[i], servicesClean[i])
-                    # if servicesClean[i] == str("ftp"):
-                    #     FTP(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("ssh"):
-                    #     SSH(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("telnet"):
-                    #     TELNET(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("smtp"):
-                    #     SMTP(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("domain"):
-                    #     DNS(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("http"):
-                    #     HTTP(self.ip, self.outputDir, portsClean[i])
-                    # if servicesClean[i] == str("pop3"):
-                    #     POP3(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("ftp"):
+                        FTP(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("ssh"):
+                        SSH(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("telnet"):
+                        TELNET(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("smtp"):
+                        SMTP(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("domain"):
+                        DNS(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("http"):
+                        HTTP(self.ip, self.outputDir, portsClean[i])
+                    if servicesClean[i] == str("pop3"):
+                        POP3(self.ip, self.outputDir, portsClean[i])
                     if servicesClean[i] == str("rpcbind"):
                         RPCBIND(self.ip, self.outputDir, portsClean[i])
                     if servicesClean[i] == str("msrpc"):

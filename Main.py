@@ -9,10 +9,8 @@ from Settings.color import *
 #
 import os
 import sys
-from datetime import datetime
 #
 shell = os.system
-dt = datetime.now()
 # Code main
 class Main:
 
@@ -50,9 +48,9 @@ class Main:
         print("{}[*]{}  --update                                        |   updates all tools that are used within this script".format(green, reset))
         print("{}[*]{}  --protocols                                     |   shows all the protocols that are supported in this script".format(green, reset))
         print("{}[*]{}  --tools <protocol>                              |   shows a list of all available tools used within this script ".format(green, reset))
-        print("{}[*]{}  --batch                                         |   run all tools (based on open ports) within this script against a target".format(green, reset))
-        print("{}[*]{}  --specific --protocol <toolname>                |   run a specific tool against a target".format(green, reset))
-        print("{}[*]{}  --multiple --protocol <toolname1> <toolname2>   |   run multiple scripts from a specific protocol against a script.".format(green, reset))
+        print("{}[*]{}  --batch                                         |   run all tools (based on open ports) within this script against a target host".format(green, reset))
+        print("{}[*]{}  --specific --protocol <toolname>                |   run a specific tool against a target host".format(green, reset))
+        print("{}[*]{}  --multiple --protocol <toolname1> <toolname2>   |   run multiple scripts from a specific protocol against a target host.".format(green, reset))
 
 
 main = Main()

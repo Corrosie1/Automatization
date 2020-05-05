@@ -106,7 +106,7 @@ SMTP_name_list = str("/usr/share/seclists/Usernames/cirt-default-usernames.txt")
 #########################################
 ### [1-2] - DNS-NMAP-ENUM/RECON (DNS) ###
 #########################################
-DNS_DOMAIN_NAME = str("")
+DNS_DOMAIN_NAME = str("usedproducts.nl")
 ##########################################################################################################################################
 ### Sets the DNS domain name, this is for when doing recon on public domain names, for example google.com, bing.com, apple.com etc... ####
 ##########################################################################################################################################

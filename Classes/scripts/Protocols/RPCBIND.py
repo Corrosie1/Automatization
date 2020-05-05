@@ -29,7 +29,8 @@ class RPCBIND:
         Test().exist_outputDir(output)
         #
         shell("gnome-terminal -q -- bash -c 'rpcinfo {} > {}/rpcInfo.txt'".format(self.ip, output))
-        print("{}[*]{} Checkout the following URL for further exploitaiton on rpcbind : {}https://book.hacktricks.xyz/pentesting/pentesting-rpcbind{}".format(green, reset, cyan, reset))
+        print("{}[*]{} Checkout the following URL for further exploitaiton on rpcbind : ".format(green, reset, cyan, reset))
+        print("{}[+]{} - https://book.hacktricks.xyz/pentesting/pentesting-rpcbind".format(brightGreen, reset))
 
     def rpcNmap(self):
         nmap = "/nmap"
