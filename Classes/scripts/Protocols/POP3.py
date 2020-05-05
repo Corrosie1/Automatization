@@ -48,7 +48,7 @@ class POP3:
     def popInfo(self):
         print("{}[*]{} Don't forget to try and make use of the following tools in {} metasploit {}, they might give you more information".format(green, reset, red, reset))
         print("{}[+]{} - 'auxiliary/scanner/pop3/pop3_login' ".format(brightGreen, reset))
-        print("{}[+]{} - 'auxiliary/scanner/pop3/pop3_version' ".format(yebrightGreenllow, reset))
+        print("{}[+]{} - 'auxiliary/scanner/pop3/pop3_version' ".format(brightGreen, reset))
         print("{}[*]{} This might also come in handy :)".format(green, reset))
         print("{}[+]{} - 'https://book.hacktricks.xyz/pentesting/pentesting-pop' ".format(brightGreen, reset))
 
