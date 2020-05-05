@@ -11,7 +11,7 @@ outputDir = str("/root/Documents/HTB_BOXES/Qbit/")
 # Specifies how many terminals are allowed to be opened at once
 # Specifies in KB how much traffic is allowed outbound. if anymore then the allowed is going out, the program will not run any new scripts
 
-maxTerminalsOpen = int(15)
+maxTerminalsOpen = int(5)
 maxOutgoingTraffic = float(100.0)
 
 # ##########################
